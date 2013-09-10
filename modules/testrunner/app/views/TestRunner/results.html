@@ -82,7 +82,7 @@
                             seleniumScreenshot = "test-result/screenshots/" + test[0..(test.length() - 6)] + result.name + ".png";
 
                             if (play.Play.getFile(seleniumScreenshot).exists())
-                                out.println('<a href="' + seleniumScreenshot + '">(Screenshot)</a><br/><br/>');
+                                out.println('<a target="_blank" href="' + seleniumScreenshot + '">(Screenshot)</a><br/><br/>');
                         }%
                         #{if result.error}
                         <strong>${result.error}</strong>

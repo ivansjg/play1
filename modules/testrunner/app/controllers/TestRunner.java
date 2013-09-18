@@ -17,6 +17,8 @@ import play.templates.TemplateLoader;
 import play.test.*;
 import play.vfs.*;
 
+import org.apache.commons.io.FileUtils;
+
 public class TestRunner extends Controller {
 
     public static void index() {
@@ -50,6 +52,9 @@ public class TestRunner extends Controller {
             if (!testResults.exists()) {
                 testResults.mkdir();
             }
+
+            FileUtils.deleteDirectory(Play.getFile("test-result/screenshots"));
+
             for(File tr : testResults.listFiles()) {
                 if ((tr.getName().endsWith(".html") || tr.getName().startsWith("result.")) && !tr.delete()) {
                     Logger.warn("Cannot delete %s ...", tr.getAbsolutePath());
